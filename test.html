@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{url_for('static', filename='style2_new07.css')}}">
+        <title>Викторина</title>
+    </head>
+    <body>
+        {% if question %}
+            <div class="title">
+                <h1>{{question}}</h1>
+            </div>
+        {% endif %}
+        <form method = "post" action = "test">
+            <input type="hidden" name="quest_numb" value="{{question_numb}}">
+            <div class="outer-div">
+                {% for answer in answers_list %}
+                    <div class="form_radio_btn">
+                        <input id="radio{{loop.index}}" type="radio" name="ans_text" value="{{answer}}">
+                        <label for="radio{{loop.index}}">{{answer}}</label>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="inner-div"><p>
+                <input class="btn" type="submit" value="Ответить">
+            </p></div>
+        </form>
+    </body>
+</html>
